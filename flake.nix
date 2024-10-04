@@ -27,10 +27,13 @@
           dash-docs = import ./dash-docs { inherit pkgs; };
           alfred-mac = import ./alfred-mac { inherit pkgs; };
         };
-        overlay.macApps = (
-          final: prev:
-          (builtins.mapAttrs (name: value: import "./${name}" { pkgs = prev; }) self.packages.aarch64-darwin)
-        );
       };
+      overlay.macApps = (
+        final: prev:
+        (builtins.mapAttrs (
+          name: value: import "./${name}" { pkgs = prev; }
+        ) self.packages.${builtins.currentSystem})
+      );
+
     };
 }
