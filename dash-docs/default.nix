@@ -2,15 +2,15 @@
 let
   inherit (pkgs) stdenv fetchurl lib;
   pname = "dash-docs";
-  version = "7";
+  version = "5.5.1";
   src = fetchurl {
-    url = "https://newyork.kapeli.com/downloads/v${version}/Dash.zip";
-    hash = "sha256-pqUzcNUP8v3ls68BIzWXggXgUVe1wc/bN5BtXqKHXM4==";
+    url = "https://cachefly.alfredapp.com/Alfred_${version}_2273.dmg";
+    hash = "sha256-wo8oNaytz07f05aZZW2X7ckmVBiDc1sM0kL6dfLZbHY=";
   };
   meta = {
-    description = "Dash is an API Documentation Browser and Code Snippet Manager.";
+    description = "Alfred is an app for macOS to boost your efficiency with hotkeys, keywords, text expansion and more.";
     homepage = "https://kapeli.com/dash";
-    license = lib.licenses.unfree;
+    # license = lib.licenses.unfree;
     maintainers = [
       {
         name = "Wrrn";
@@ -18,7 +18,7 @@ let
       }
     ];
     platforms = [ "aarch64-darwin" ];
-    mainProgram = "Dash.app";
+    mainProgram = "Alfred.app";
   };
 in
 stdenv.mkDerivation {
@@ -29,7 +29,10 @@ stdenv.mkDerivation {
     meta
     ;
 
-  nativeBuildInputs = with pkgs; [ unzip ];
+  nativeBuildInputs = with pkgs; [
+    unzip
+    undmg
+  ];
 
   sourceRoot = ".";
 
@@ -37,9 +40,4 @@ stdenv.mkDerivation {
     mkdir -p $out/Applications
     cp -r *.app $out/Applications
   '';
-}
-# Add amethyst to nixpkgs
-final: prev:
-{
-  amethyst = import ./amethyst.nix {pkgs = prev};
 }

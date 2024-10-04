@@ -21,15 +21,16 @@
     {
       packages = {
         aarch64-darwin = {
-          emacs-plus = import ./emacs/emacs-plus.nix { inherit pkgs; };
+          emacs-plus = import ./emacs { inherit pkgs; };
           little-snitch = import ./little-snitch { inherit pkgs; };
           amethyst = import ./amethyst { inherit pkgs; };
           dash-docs = import ./dash-docs { inherit pkgs; };
+          alfred-mac = import ./alfred-mac { inherit pkgs; };
         };
-      };
-      overlays = {
-        emacs = import ./emacs/overlay.nix;
-        little-snitch = import ./little-snitch/overlay.nix;
+        overlay.macApps = (
+          final: prev:
+          (builtins.mapAttrs (name: value: import "./${name}" { pkgs = prev; }) self.packages.aarch64-darwin)
+        );
       };
     };
 }
