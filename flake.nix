@@ -20,6 +20,8 @@
         dash-docs = pkgs.callPackage ./dash-docs { };
         alfred-mac = pkgs.callPackage ./alfred-mac { };
         inyourface = pkgs.callPackage ./inyourface { };
+        monodraw = pkgs.callPackage ./monodraw { };
+        hammerspoon = pkgs.callPackage ./hammerspoon { };
       };
     in
     {
