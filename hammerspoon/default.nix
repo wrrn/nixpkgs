@@ -5,7 +5,7 @@ let
   version = "1.0.0";
   src = fetchurl {
     url = "https://github.com/Hammerspoon/hammerspoon/releases/download/${version}/Hammerspoon-${version}.zip";
-    hash = "sha256-wo8oNaytz07f05aZZW2X7ckmVBiDc1sM0kL6dfLZbHY=";
+    hash = "sha256-XbcCtV2kfcMG6PWUjZHvhb69MV3fopQoMioK9+1+an4=";
   };
   meta = {
 
