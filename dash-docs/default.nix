@@ -2,15 +2,15 @@
 let
   inherit (pkgs) stdenv fetchurl lib;
   pname = "dash-docs";
-  version = "5.5.1";
+  version = "7";
   src = fetchurl {
-    url = "https://cachefly.alfredapp.com/Alfred_${version}_2273.dmg";
+    url = "https://newyork.kapeli.com/downloads/v${version}/Dash.zip";
     hash = "sha256-wo8oNaytz07f05aZZW2X7ckmVBiDc1sM0kL6dfLZbHY=";
   };
   meta = {
-    description = "Alfred is an app for macOS to boost your efficiency with hotkeys, keywords, text expansion and more.";
+    description = "Dash is an API Documentation Browser and Code Snippet Manager.";
     homepage = "https://kapeli.com/dash";
-    # license = lib.licenses.unfree;
+    license = lib.licenses.unfree;
     maintainers = [
       {
         name = "Wrrn";
@@ -18,7 +18,7 @@ let
       }
     ];
     platforms = [ "aarch64-darwin" ];
-    mainProgram = "Alfred.app";
+    mainProgram = "Dash.app";
   };
 in
 stdenv.mkDerivation {
@@ -29,10 +29,7 @@ stdenv.mkDerivation {
     meta
     ;
 
-  nativeBuildInputs = with pkgs; [
-    unzip
-    undmg
-  ];
+  nativeBuildInputs = with pkgs; [ unzip ];
 
   sourceRoot = ".";
 
