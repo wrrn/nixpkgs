@@ -23,6 +23,8 @@
         aarch64-darwin = {
           emacs-plus = import ./emacs/emacs-plus.nix { inherit pkgs; };
           little-snitch = import ./little-snitch { inherit pkgs; };
+          amethyst = import ./amethyst { inherit pkgs; };
+          dash-docs = import ./dash-docs { inherit pkgs; };
         };
       };
       overlays = {

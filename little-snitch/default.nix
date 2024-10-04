@@ -6,16 +6,16 @@ let
   pname = "little snitch";
   version = "6.1.1";
   src = fetchurl {
-    url = "https://www.obdev.at/downloads/littlesnitch/LittleSnitch-6.1.1.dmg";
+    url = "https://www.obdev.at/downloads/littlesnitch/LittleSnitch-${version}.dmg";
     hash = "sha256-nizzwmfGLfYBkP4YrjWBXvaQ4uKmztOBk3SFImht24w=";
   };
   meta = {
     # This is an MacOS App, so it won't work anywhere else.
     broken = !stdenv.hostPlatform.isDarwin;
-    description = "Little Snitch is a host-based application firewall for macOS";
+    description = "Little Snitch is a host-based application firewall for macOS.";
     homepage = "https://www.obdev.at/products/littlesnitch";
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
-    # license = lib.licenses.unfree;
+    license = lib.licenses.unfree;
     maintainers = [
       {
         name = "Wrrn";
@@ -23,7 +23,7 @@ let
       }
     ];
     platforms = [ "aarch64-darwin" ];
-    mainProgram = "little snitch";
+    mainProgram = "Little Snitch.app";
   };
 in
 stdenv.mkDerivation {
