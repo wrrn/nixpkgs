@@ -19,6 +19,7 @@
         amethyst = pkgs.callPackage ./amethyst { };
         dash-docs = pkgs.callPackage ./dash-docs { };
         alfred-mac = pkgs.callPackage ./alfred-mac { };
+        inyourface = pkgs.callPackage ./inyourface { };
       };
     in
     {
