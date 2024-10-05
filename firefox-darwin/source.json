@@ -1,0 +1,12 @@
+{
+  "firefox": {
+    "version": "131.0",
+    "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/131.0/mac/en-US/Firefox%20131.0.dmg",
+    "hash": "sha256-zSQ7RHRvVu4gQlcszKsnNsDG1Bn4X5CtFjpLoEl5zLI="
+  },
+  "firefox-devedition": {
+    "version": "132.0b2",
+    "url": "https://download-installer.cdn.mozilla.net/pub/devedition/releases/132.0b2/mac/en-US/Firefox%20132.0b2.dmg",
+    "hash": "sha256-xeQ19waZEd7CJQspvKGsunpbD1ngenhNOPQwTg0NNBc="
+  }
+}
