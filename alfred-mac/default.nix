@@ -29,8 +29,8 @@ stdenv.mkDerivation {
     meta
     ;
 
+  dontPatchShebangs = true; # Alfred reports that it's broken if the shebangs are patched.
   nativeBuildInputs = with pkgs; [
-    unzip
     undmg
   ];
 
