@@ -4,10 +4,10 @@
 let
   inherit (pkgs) stdenv fetchurl lib;
   pname = "little snitch";
-  version = "6.1.1";
+  version = "6.1.2";
   src = fetchurl {
     url = "https://www.obdev.at/downloads/littlesnitch/LittleSnitch-${version}.dmg";
-    hash = "sha256-nizzwmfGLfYBkP4YrjWBXvaQ4uKmztOBk3SFImht24w=";
+    hash = "sha256-9i1YdkLvZCOs+9/4hZbI/XENRBSuR3FkMITOZigyDNQ=";
   };
   meta = {
     # This is an MacOS App, so it won't work anywhere else.

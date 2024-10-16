@@ -24,6 +24,7 @@
         hammerspoon = pkgs.callPackage ./hammerspoon { };
         firefox-darwin = pkgs.callPackage ./firefox-darwin { edition = "firefox"; };
         firefox-devedition-darwin = pkgs.callPackage ./firefox-darwin { edition = "firefox-devedition"; };
+        bartender = pkgs.bartender;
       };
     in
     {
