@@ -5,7 +5,7 @@ let
   version = "";
   src = fetchurl {
     url = "https://bluebanana-software.com/iyf/InYourFace.zip";
-    hash = "sha256-mS4OsMkDYFsavtYWHtCQrq3XjX9/qhFeI/eL+hZIOak=";
+    hash = "sha256-HEZTjBH/DOuH3AX/EZl8NuqD1pzKnpNdRsGNTsPZXqc=";
   };
   meta = {
     description = "In Your Face blocks your screen just in time for the meeting.";
