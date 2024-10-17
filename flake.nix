@@ -5,12 +5,16 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+    };
   };
 
   outputs =
     {
       self,
       nixpkgs,
+      flake-utils,
     }@inputs:
     let
       allPackages = pkgs: {
@@ -38,6 +42,23 @@
           allPackages pkgs;
       };
 
-      overlay.macApps = (final: prev: allPackages final);
+      overlays.macApps = (final: prev: allPackages final);
+
+      devShells = flake-utils.lib.eachDefaultSystemPassThrough (
+        system:
+        let
+          pkgs = import nixpkgs { inherit system; };
+        in
+        {
+          ${system}.default = pkgs.mkShell {
+            packages = [
+              pkgs.gnumake
+              pkgs.jq
+              pkgs.coreutils-full
+            ];
+          };
+        }
+      );
     };
+
 }

@@ -1,0 +1,42 @@
+{
+  "firefox": {
+    "version": "131.0.3",
+    "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/131.0.3/mac/en-US/Firefox%20131.0.3.dmg",
+    "hash": "sha256-ekcU4gtPIJkFbkx5khKRJWJ4F0Jz1Xv/CXcfmHdP9RM="
+  },
+  "firefox-beta": {
+    "version": "132.0b8",
+    "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/132.0b8/mac/en-US/Firefox%20132.0b8.dmg",
+    "hash": "sha256-46mtFOGuXUiHptJlDHwWAx3RHZL66iPU/Dc8UC4QCJE="
+  },
+  "firefox-devedition": {
+    "version": "132.0b8",
+    "url": "https://download-installer.cdn.mozilla.net/pub/devedition/releases/132.0b8/mac/en-US/Firefox%20132.0b8.dmg",
+    "hash": "sha256-6ot+/Wzbrql1OZYyP5wd8/iNpGWhmzVkwZ1f5BbJBq0="
+  },
+  "firefox-esr": {
+    "version": "128.3.1esr",
+    "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/128.3.1esr/mac/en-US/Firefox%20128.3.1esr.dmg",
+    "hash": "sha256-gaC4vZ7RMHxGUxN8NZDTCM83CZp0BnQZm1L94LK67Uo="
+  },
+  "firefox-nightly": {
+    "version": "133.0a1",
+    "url": "https://download-installer.cdn.mozilla.net/pub/firefox/nightly/2024/10/2024-10-17-09-58-24-mozilla-central/firefox-133.0a1.en-US.mac.dmg",
+    "hash": "sha256-MoDNHrNOo6CX4hszyA4kG28ZzZoWDi1aECQRtmuhT1M="
+  },
+  "librewolf-arm64": {
+    "version": "131.0.2-1",
+    "url": "https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/131.0.2-1/librewolf-131.0.2-1-macos-arm64-package.dmg",
+    "sha256": "35eea27dff26d082dec0a69f12e45524fe7607b4ee0579901ac218b6df48d179"
+  },
+  "librewolf-x86_64": {
+    "version": "131.0.2-1",
+    "url": "https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/131.0.2-1/librewolf-131.0.2-1-macos-x86_64-package.dmg",
+    "sha256": "fa8fb8a6136607aa41332f6140ff49e8f36cf0df8da4a3b58a9e20614190afd3"
+  },
+  "floorp-x86_64": {
+    "version": "v11.19.1",
+    "url": "https://github.com/Floorp-Projects/Floorp/releases/download/v11.19.1/floorp-macOS-universal.dmg",
+    "sha256": "aecdde85680dc85f3291f2f4364ebc5b965e5060409f5b480728babce0dd722b"
+  }
+}
