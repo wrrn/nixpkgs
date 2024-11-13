@@ -17,6 +17,7 @@
       flake-utils,
     }@inputs:
     let
+      inherit (flake-utils.lib) system;
       allPackages = pkgs: {
         emacs-plus = pkgs.callPackage ./emacs { };
         little-snitch = pkgs.callPackage ./little-snitch { };
@@ -28,6 +29,7 @@
         hammerspoon = pkgs.callPackage ./hammerspoon { };
         firefox-darwin = pkgs.callPackage ./firefox-darwin { edition = "firefox"; };
         firefox-devedition-darwin = pkgs.callPackage ./firefox-darwin { edition = "firefox-devedition"; };
+        librewolf-darwin = pkgs.callPackage ./firefox-darwin { edition = "librewolf-${pkgs.hostPlatform.darwinArch}"; };
       };
     in
     {
@@ -35,7 +37,7 @@
         aarch64-darwin =
           let
             pkgs = import nixpkgs {
-              system = "aarch64-darwin";
+              system = system.aarch64-darwin;
               config.allowUnfree = true;
             };
           in

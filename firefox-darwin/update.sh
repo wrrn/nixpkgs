@@ -11,8 +11,8 @@ function generate_json_librewolf(){
 	jq -n \
 		--arg version "$(echo $base_json_librewolf | jq -r '.[0].tag_name')" \
 		--arg url $url \
-		--arg sha256 "$(curl -sL $url.sha256sum)" \
-		'{version: $version, url: $url, sha256: $sha256}'
+		--arg hash "$(convert_hash "$(curl -sL $url.sha256sum)")" \
+		'{version: $version, url: $url, hash: $hash}'
 }
 
 function generate_json_floorp(){
@@ -90,7 +90,11 @@ function get_sha256() {
 }
 
 function get_hash() {
-    nix hash convert --hash-algo sha256 "$(get_sha256 "$1")"
+    convert_hash "$(get_sha256 "$1")"
+}
+
+function convert_hash() {
+    nix hash convert --hash-algo sha256 "$1"
 }
 
 function generate_json() {
@@ -105,7 +109,6 @@ function generate_json() {
 json=$(
 	cat <<EOF
     {
-		"firefox": $(generate_json "firefox"),
 		"firefox-beta": $(generate_json "firefox-beta"),
 		"firefox-devedition": $(generate_json "firefox-devedition"),
 		"firefox-esr": $(generate_json "firefox-esr"),
