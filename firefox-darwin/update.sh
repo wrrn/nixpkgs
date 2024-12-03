@@ -59,7 +59,6 @@ function get_path() {
 		;;
 	firefox-nightly)
 		date=$(curl -s "$base_url/firefox/nightly/latest-mozilla-central/firefox-$(get_version "$1").en-US.mac.buildhub.json" | jq -r ".build.date") 
-
 		year=$(date -u -d $date +"%Y")
 		month=$(date -u -d $date +"%m")
 		formatted_date=$(date -u -d $date +"%Y-%m-%d-%H-%M-%S")
