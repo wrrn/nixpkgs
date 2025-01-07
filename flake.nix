@@ -18,8 +18,9 @@
     }@inputs:
     let
       inherit (flake-utils.lib) system;
-      allPackages = pkgs: {
+      allPackages = pkgs: rec {
         emacs-plus = pkgs.callPackage ./emacs { };
+        emacs-plus-client = pkgs.callPackage ./emacsclient { emacsPkg = emacs-plus; };
         little-snitch = pkgs.callPackage ./little-snitch { };
         amethyst = pkgs.callPackage ./amethyst { };
         dash-docs = pkgs.callPackage ./dash-docs { };
@@ -29,7 +30,9 @@
         hammerspoon = pkgs.callPackage ./hammerspoon { };
         firefox-darwin = pkgs.callPackage ./firefox-darwin { edition = "firefox"; };
         firefox-devedition-darwin = pkgs.callPackage ./firefox-darwin { edition = "firefox-devedition"; };
-        librewolf-darwin = pkgs.callPackage ./firefox-darwin { edition = "librewolf-${pkgs.hostPlatform.darwinArch}"; };
+        librewolf-darwin = pkgs.callPackage ./firefox-darwin {
+          edition = "librewolf-${pkgs.hostPlatform.darwinArch}";
+        };
       };
     in
     {
