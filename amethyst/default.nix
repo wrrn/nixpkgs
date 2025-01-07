@@ -2,10 +2,10 @@
 let
   inherit (pkgs) stdenv fetchurl lib;
   pname = "amethyst";
-  version = "0.21.2";
+  version = "0.22.0";
   src = fetchurl {
     url = "https://github.com/ianyh/Amethyst/releases/download/v${version}/Amethyst.zip";
-    hash = "sha256-pqUzcNUP8v3ls68BIzWXggXgUVe1wc/bN5BtXqKHXM4==";
+    hash = "sha256-3J2uMWEywD7Fp/+QdnFk+EEKlOLTJ/G1JaOekPb9kP4=";
   };
   meta = {
     description = "Tiling window manager for macOS along the lines of xmonad.";
@@ -14,11 +14,11 @@ let
     maintainers = [
       {
         name = "Wrrn";
-        email = "nix@wjh.io";
+        email = "nix@wrrn.org";
       }
     ];
     platforms = [ "aarch64-darwin" ];
-    mainProgram = "Little Snitch.App";
+    mainProgram = "Amethyst.App";
   };
 in
 stdenv.mkDerivation {
