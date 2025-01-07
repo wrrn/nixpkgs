@@ -4,11 +4,10 @@
   emacsPkg,
 }:
 let
-  appName = "EmacsClient";
+  appName = "Emacs Client";
 
   # Use the emacsclient binary from the emacs package that is provided. This
   # means that emacPkg must be installed.
-  # TODO: Figure out a better way to do this
   binary = "${emacsPkg}/bin/emacsclient";
 
   # Building requires a few system tools to be in PATH.
@@ -20,10 +19,9 @@ let
   '';
 
   ## Create a wrapper around the binary so that we can pass a flag.
-  launcher = pkgs.writeText "emacsclient-launch" ''
+  launcher = pkgs.writeText "emacsclient" ''
     on run
         do shell script "${binary} -c -n"
-        tell application "Emacs" to activate
     end run
   '';
 
@@ -59,9 +57,9 @@ pkgs.runCommandNoCC "emacsclient-app"
   }
   ''
     mkdir -p $out/Applications
-    osacompile -o $out/Applications/${appName}.app ${launcher}
+    osacompile -o "$out/Applications/${appName}.app" ${launcher}
 
-    install -Dm644 ${infoPlist} $out/Applications/${appName}.app/Contents/Info.plist
-    install -Dm755 ${binary} $out/Applications/${appName}.app/Contents/MacOS/emacsclient
-    install -Dm644 ${icon} $out/Applications/${appName}.app/Contents/Resources/Emacs.icns
+    install -Dm644 ${infoPlist} "$out/Applications/${appName}.app/Contents/Info.plist"
+    install -Dm755 ${binary} "$out/Applications/${appName}.app/Contents/MacOS/emacsclient"
+    install -Dm644 ${icon} "$out/Applications/${appName}.app/Contents/Resources/Emacs.icns"
   ''
