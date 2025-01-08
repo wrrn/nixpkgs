@@ -19,20 +19,22 @@
     let
       inherit (flake-utils.lib) system;
       allPackages = pkgs: rec {
-        emacs-plus = pkgs.callPackage ./emacs { };
-        emacs-plus-client = pkgs.callPackage ./emacsclient { emacsPkg = emacs-plus; };
-        little-snitch = pkgs.callPackage ./little-snitch { };
+        alfred-mac = pkgs.callPackage ./alfred-mac { };
         amethyst = pkgs.callPackage ./amethyst { };
         dash-docs = pkgs.callPackage ./dash-docs { };
-        alfred-mac = pkgs.callPackage ./alfred-mac { };
-        inyourface = pkgs.callPackage ./inyourface { };
-        monodraw = pkgs.callPackage ./monodraw { };
-        hammerspoon = pkgs.callPackage ./hammerspoon { };
+        emacs-plus = pkgs.callPackage ./emacs { };
+        emacs-plus-client = pkgs.callPackage ./emacsclient { emacsPkg = emacs-plus; };
         firefox-darwin = pkgs.callPackage ./firefox-darwin { edition = "firefox"; };
         firefox-devedition-darwin = pkgs.callPackage ./firefox-darwin { edition = "firefox-devedition"; };
+        ghostty = pkgs.callPackage ./ghostty { };
+        hammerspoon = pkgs.callPackage ./hammerspoon { };
+        inyourface = pkgs.callPackage ./inyourface { };
         librewolf-darwin = pkgs.callPackage ./firefox-darwin {
           edition = "librewolf-${pkgs.hostPlatform.darwinArch}";
         };
+        little-snitch = pkgs.callPackage ./little-snitch { };
+        monodraw = pkgs.callPackage ./monodraw { };
+
       };
     in
     {
