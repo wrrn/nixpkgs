@@ -34,7 +34,7 @@
         };
         little-snitch = pkgs.callPackage ./little-snitch { };
         monodraw = pkgs.callPackage ./monodraw { };
-
+        zen-browser = pkgs.callPackage ./zenbrowser { };
       };
     in
     {
