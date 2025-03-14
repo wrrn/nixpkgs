@@ -7,10 +7,10 @@ let
     lib
     ;
   pname = "zen-browser";
-  version = "1.6b";
+  version = "1.9.1b";
   src = fetchurl {
-    url = "https://github.com/zen-browser/desktop/releases/latest/download/zen.macos-aarch64.dmg";
-    hash = "sha256-ktJqRFwGzmZzR7hDzYY83tLZX93k53IQn8vrurKchrc=";
+    url = "https://github.com/zen-browser/desktop/releases/latest/download/zen.macos-universal.dmg";
+    hash = "sha256-h3dnRzjJ0rfrg8b5K8UsdR8bScPIZ/V3jviirkWb+gU=";
   };
   meta = {
     description = "🌀 Experience tranquillity while browsing the web without people tracking you!";
