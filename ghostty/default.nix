@@ -10,7 +10,7 @@ let
         lib
         ;
       pname = "ghostty";
-      version = "1.0.1";
+      version = "1.1.2";
       src = fetchurl {
         url = "https://release.files.ghostty.org/${version}/Ghostty.dmg";
         hash = "sha256-QA9oy9EXLSFbzcRybKM8CxmBnUYhML82w48C+0gnRmM=";

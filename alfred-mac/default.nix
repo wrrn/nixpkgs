@@ -2,10 +2,10 @@
 let
   inherit (pkgs) stdenv fetchurl lib;
   pname = "alfred-mac";
-  version = "5.5.1";
+  version = "5.6_2290";
   src = fetchurl {
-    url = "https://cachefly.alfredapp.com/Alfred_${version}_2273.dmg";
-    hash = "sha256-BopF9IV/JOpu/aViwV4nDxivlQUZmN+K3+f1/7BaN6M=";
+    url = "https://cachefly.alfredapp.com/Alfred_${version}.dmg";
+    hash = "sha256-ZF1iM2U4Mf1ME97C7cp+L2kTcOMome330MLLGFl0dBE=";
   };
   meta = {
     description = "Alfred is an app for macOS to boost your efficiency with hotkeys, keywords, text expansion and more.";

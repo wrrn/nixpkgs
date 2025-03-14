@@ -2,7 +2,7 @@
 let
   inherit (pkgs) stdenv fetchurl lib;
   pname = "amethyst";
-  version = "0.22.0";
+  version = "0.22.2";
   src = fetchurl {
     url = "https://github.com/ianyh/Amethyst/releases/download/v${version}/Amethyst.zip";
     hash = "sha256-3J2uMWEywD7Fp/+QdnFk+EEKlOLTJ/G1JaOekPb9kP4=";
