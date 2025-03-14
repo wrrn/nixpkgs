@@ -5,7 +5,7 @@ let
   version = "0.22.2";
   src = fetchurl {
     url = "https://github.com/ianyh/Amethyst/releases/download/v${version}/Amethyst.zip";
-    hash = "sha256-3J2uMWEywD7Fp/+QdnFk+EEKlOLTJ/G1JaOekPb9kP4=";
+    hash = "sha256-Q7FvrfnTScXT9aQGkX9g4x0Oplsfn8UpsJKS6Qb3XlA=";
   };
   meta = {
     description = "Tiling window manager for macOS along the lines of xmonad.";
