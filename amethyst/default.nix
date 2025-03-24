@@ -2,10 +2,10 @@
 let
   inherit (pkgs) stdenv fetchurl lib;
   pname = "amethyst";
-  version = "0.22.2";
+  version = "0.23.0";
   src = fetchurl {
     url = "https://github.com/ianyh/Amethyst/releases/download/v${version}/Amethyst.zip";
-    hash = "sha256-Q7FvrfnTScXT9aQGkX9g4x0Oplsfn8UpsJKS6Qb3XlA=";
+    hash = "sha256-7Htq/kR3c4srtdhxOC4io8y7MsQwGn454vx56fdvfoY=";
   };
   meta = {
     description = "Tiling window manager for macOS along the lines of xmonad.";
