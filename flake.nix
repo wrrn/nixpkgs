@@ -62,6 +62,7 @@
               pkgs.gnumake
               pkgs.jq
               pkgs.coreutils-full
+              pkgs.nix-update
             ];
           };
         }

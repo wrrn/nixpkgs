@@ -1,6 +1,11 @@
 { pkgs }:
 let
-  inherit (pkgs) stdenv fetchurl lib;
+  inherit (pkgs)
+    stdenv
+    fetchurl
+    lib
+    nix-update-script
+    ;
   pname = "amethyst";
   version = "0.23.0";
   src = fetchurl {
@@ -37,4 +42,5 @@ stdenv.mkDerivation {
     mkdir -p $out/Applications
     cp -r *.app $out/Applications
   '';
+  passthru.updateScript = nix-update-script { };
 }
