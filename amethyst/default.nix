@@ -7,10 +7,10 @@ let
     nix-update-script
     ;
   pname = "amethyst";
-  version = "0.23.0";
+  version = "0.23.1";
   src = fetchurl {
     url = "https://github.com/ianyh/Amethyst/releases/download/v${version}/Amethyst.zip";
-    hash = "sha256-7Htq/kR3c4srtdhxOC4io8y7MsQwGn454vx56fdvfoY=";
+    hash = "sha256-uMgz/+AFhQdaimk1wTzyoNWZG8Xm5vXjgJoftf0sZ6M=";
   };
   meta = {
     description = "Tiling window manager for macOS along the lines of xmonad.";
