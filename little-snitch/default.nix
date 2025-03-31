@@ -3,7 +3,7 @@
 }:
 let
   inherit (pkgs) stdenv fetchurl lib;
-  pname = "little snitch";
+  pname = "little-snitch";
   version = "6.2.3";
   src = fetchurl {
     url = "https://www.obdev.at/downloads/littlesnitch/LittleSnitch-${version}.dmg";
@@ -48,4 +48,6 @@ stdenv.mkDerivation {
 
   # Little Snitch is notarized.
   dontFixup = true;
+
+  passthru.updateScript = ./update.sh;
 }
