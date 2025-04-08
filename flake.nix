@@ -19,9 +19,7 @@
     let
       inherit (flake-utils.lib) system;
       allPackages = pkgs: rec {
-        alfred-mac = pkgs.callPackage ./alfred-mac { };
         amethyst = pkgs.callPackage ./amethyst { };
-        dash-docs = pkgs.callPackage ./dash-docs { };
         emacs-plus = pkgs.callPackage ./emacs { };
         emacs-plus-client = pkgs.callPackage ./emacsclient { emacsPkg = emacs-plus; };
         firefox-darwin = pkgs.callPackage ./firefox-darwin { edition = "firefox"; };
@@ -32,7 +30,6 @@
         librewolf-darwin = pkgs.callPackage ./firefox-darwin {
           edition = "librewolf-${pkgs.hostPlatform.darwinArch}";
         };
-        little-snitch = pkgs.callPackage ./little-snitch { };
         monodraw = pkgs.callPackage ./monodraw { };
         zen-browser = pkgs.callPackage ./zenbrowser { };
       };
