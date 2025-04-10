@@ -24,6 +24,7 @@
         emacs-plus-client = pkgs.callPackage ./emacsclient { emacsPkg = emacs-plus; };
         firefox-darwin = pkgs.callPackage ./firefox-darwin { edition = "firefox"; };
         firefox-devedition-darwin = pkgs.callPackage ./firefox-darwin { edition = "firefox-devedition"; };
+        ghostty = pkgs.callPackage ./ghostty { };
         hammerspoon = pkgs.callPackage ./hammerspoon { };
         inyourface = pkgs.callPackage ./inyourface { };
         librewolf-darwin = pkgs.callPackage ./firefox-darwin {
