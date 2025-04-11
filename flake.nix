@@ -31,6 +31,7 @@
           edition = "librewolf-${pkgs.hostPlatform.darwinArch}";
         };
         monodraw = pkgs.callPackage ./monodraw { };
+        shortcat = pkgs.callPackage ./shortcat { };
         zen-browser = pkgs.callPackage ./zenbrowser { };
       };
     in
