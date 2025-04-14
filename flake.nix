@@ -33,6 +33,9 @@
         monodraw = pkgs.callPackage ./monodraw { };
         shortcat = pkgs.callPackage ./shortcat { };
         zen-browser = pkgs.callPackage ./zenbrowser { };
+        git-stack = pkgs.callPackage ./git-stack {
+          Security = pkgs.Security or null;
+        };
       };
     in
     {
@@ -45,6 +48,7 @@
             };
           in
           allPackages pkgs;
+
       };
 
       overlays.macApps = (final: prev: allPackages final);
