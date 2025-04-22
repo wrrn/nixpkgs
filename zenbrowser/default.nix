@@ -5,12 +5,13 @@ let
     stdenvNoCC
     fetchurl
     lib
+    nix-update-script
     ;
   pname = "zen-browser";
-  version = "1.9.1b";
+  version = "1.11.5b";
   src = fetchurl {
-    url = "https://github.com/zen-browser/desktop/releases/latest/download/zen.macos-universal.dmg";
-    hash = "sha256-h3dnRzjJ0rfrg8b5K8UsdR8bScPIZ/V3jviirkWb+gU=";
+    url = "https://github.com/zen-browser/desktop/releases/download/${version}/zen.macos-universal.dmg";
+    hash = "sha256-iONb4jqWW6XKZA0BwNr9KkaTw7mLtkwF6S/veN4gktU=";
   };
   meta = {
     description = "🌀 Experience tranquillity while browsing the web without people tracking you!";
@@ -42,4 +43,6 @@ stdenv.mkDerivation {
     mkdir -p $out/Applications
     cp -r *.app $out/Applications
   '';
+
+  passthru.updateScript = nix-update-script { };
 }
