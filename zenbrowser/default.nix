@@ -8,10 +8,10 @@ let
     nix-update-script
     ;
   pname = "zen-browser";
-  version = "1.11.5b";
+  version = "1.12.1b";
   src = fetchurl {
     url = "https://github.com/zen-browser/desktop/releases/download/${version}/zen.macos-universal.dmg";
-    hash = "sha256-iONb4jqWW6XKZA0BwNr9KkaTw7mLtkwF6S/veN4gktU=";
+    hash = "sha256-cf6d//9tjYvUVZHtAsvpJ5H0+8Pw/99dYViAhH8qIZM=";
   };
   meta = {
     description = "🌀 Experience tranquillity while browsing the web without people tracking you!";
