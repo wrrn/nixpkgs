@@ -32,7 +32,9 @@
         };
         monodraw = pkgs.callPackage ./monodraw { };
         shortcat = pkgs.callPackage ./shortcat { };
+        yaak = pkgs.callPackage ./yaak { };
         zen-browser = pkgs.callPackage ./zenbrowser { };
+
       };
     in
     {
