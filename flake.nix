@@ -27,7 +27,6 @@
         claude-code = pkgs.callPackage ./claude-code { };
         ghostty = pkgs.callPackage ./ghostty { };
         hammerspoon = pkgs.callPackage ./hammerspoon { };
-        inyourface = pkgs.callPackage ./inyourface { };
         librewolf-darwin = pkgs.callPackage ./firefox-darwin {
           edition = "librewolf-${pkgs.hostPlatform.darwinArch}";
         };
@@ -35,7 +34,6 @@
         shortcat = pkgs.callPackage ./shortcat { };
         yaak = pkgs.callPackage ./yaak { };
         zen-browser = pkgs.callPackage ./zenbrowser { };
-
       };
     in
     {
@@ -51,7 +49,11 @@
 
       };
 
-      overlays.macApps = (final: prev: allPackages final);
+      overlays.macApps = (
+        final: prev: {
+          wrrn = allPackages final;
+        }
+      );
 
       devShells = flake-utils.lib.eachDefaultSystemPassThrough (
         system:
