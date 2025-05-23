@@ -22,7 +22,6 @@
         amethyst = pkgs.callPackage ./amethyst { };
         emacs-plus = pkgs.callPackage ./emacs { };
         emacs-plus-client = pkgs.callPackage ./emacsclient { emacsPkg = emacs-plus; };
-        firefox-darwin = pkgs.callPackage ./firefox-darwin { edition = "firefox"; };
         firefox-devedition-darwin = pkgs.callPackage ./firefox-darwin { edition = "firefox-devedition"; };
         claude-code = pkgs.callPackage ./claude-code { };
         ghostty = pkgs.callPackage ./ghostty { };

@@ -1,4 +1,8 @@
-{ pkgs, edition }:
+{
+  pkgs,
+  edition,
+  ...
+}:
 let
   sources = (builtins.fromJSON (builtins.readFile ./sources.json));
   build = import ./build.nix;
