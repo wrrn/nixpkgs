@@ -30,6 +30,7 @@
           edition = "librewolf-${pkgs.hostPlatform.darwinArch}";
         };
         mongodb-atlas-cli = pkgs.callPackage ./mongodb-atlas-cli { };
+        mongosh = pkgs.callPackage ./mongosh { };
         monodraw = pkgs.callPackage ./monodraw { };
         shortcat = pkgs.callPackage ./shortcat { };
         wireman = pkgs.callPackage ./wireman { };
