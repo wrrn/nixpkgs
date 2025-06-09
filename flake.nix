@@ -32,6 +32,7 @@
         mongodb-atlas-cli = pkgs.callPackage ./mongodb-atlas-cli { };
         monodraw = pkgs.callPackage ./monodraw { };
         shortcat = pkgs.callPackage ./shortcat { };
+        wireman = pkgs.callPackage ./wireman { };
         yaak = pkgs.callPackage ./yaak { };
         zen-browser = pkgs.callPackage ./zenbrowser { };
       };
