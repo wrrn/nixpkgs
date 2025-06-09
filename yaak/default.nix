@@ -7,10 +7,10 @@ let
     nix-update-script
     ;
   pname = "yaak";
-  version = "2025.1.2";
+  version = "2025.3.1";
   src = fetchurl {
     url = "https://github.com/mountain-loop/yaak/releases/download/v${version}/Yaak_${version}_aarch64.dmg";
-    hash = "sha256-6Xf+fD1oZSe6HBqRDQpwGGO9YBZCNFErzo2kFB+LLiY=";
+    hash = "sha256-mJ0At+dFUyG+F1WiupR/DopZfbKKXJNMKf1LlalVR9U=";
   };
   meta = {
     description = "Yaak is a desktop API client for interacting with REST, GraphQL, Server Sent Events (SSE), WebSocket, and gRPC APIs.";
