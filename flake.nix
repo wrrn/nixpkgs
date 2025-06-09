@@ -29,6 +29,7 @@
         librewolf-darwin = pkgs.callPackage ./firefox-darwin {
           edition = "librewolf-${pkgs.hostPlatform.darwinArch}";
         };
+        mongodb-atlas-cli = pkgs.callPackage ./mongodb-atlas-cli { };
         monodraw = pkgs.callPackage ./monodraw { };
         shortcat = pkgs.callPackage ./shortcat { };
         yaak = pkgs.callPackage ./yaak { };
