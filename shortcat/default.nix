@@ -8,11 +8,11 @@
 
 stdenv.mkDerivation rec {
   pname = "shortcat";
-  version = "0.12.0";
+  version = "0.12.2";
 
   src = fetchurl {
     url = "https://files.shortcat.app/releases/v${version}/Shortcat.zip";
-    sha256 = "sha256-lEcmvqWEToPuoVFsHyeFfjQzIq4MhSNQMkG9QWvbHQA=";
+    sha256 = "sha256-jmp9mBMYID0Zcu/o6ICYPS8QGHhSwcLz072jG3zR2mM=";
   };
 
   sourceRoot = "Shortcat.app";
