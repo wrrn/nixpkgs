@@ -14,7 +14,7 @@ pkgs.mongosh.overrideAttrs (previousAttrs: rec {
   };
 
   patches = [
-    (builtins.elemAt previousAttrs.patches 1)
+    (builtins.elemAt previousAttrs.patches 0)
   ];
   npmDepsHash = "sha256-rB8Dg4nQb5zbEKpCx0kN4f3sC8zDY4wrmOp5jdAufoY=";
   npmDeps = pkgs.fetchNpmDeps {
