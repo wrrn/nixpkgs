@@ -2,10 +2,10 @@
 let
   inherit (pkgs) stdenv fetchurl lib;
   pname = "monodraw";
-  version = "1.7";
+  version = "1.7.1";
   src = fetchurl {
     url = "https://updates.helftone.com/monodraw/downloads/monodraw-latest.dmg";
-    hash = "sha256-4e72KVYeoM8S608VtDbrOxowk9IN0Q5bVdeuV95CFGQ=";
+    hash = "sha256-0JsDfBYxpgb6jjeM2DjehZL0nTz7F1NckFSh1ko5m6c=";
   };
   meta = {
     description = "ASCII art editor designed for the Mac";
