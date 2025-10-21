@@ -52,11 +52,19 @@
 
       };
 
-      overlays.macApps = (
-        final: prev: {
-          wrrn = allPackages final;
-        }
-      );
+      overlays = {
+        default = (
+          final: prev: {
+            wrrn = allPackages final;
+          }
+        );
+
+        macApps = (
+          final: prev: {
+            wrrn = allPackages final;
+          }
+        );
+      };
 
       devShells = flake-utils.lib.eachDefaultSystemPassThrough (
         system:
