@@ -9,6 +9,15 @@
     flake-utils = {
       url = "github:numtide/flake-utils";
     };
+
+    octotype = {
+      url = "github:mahlquistj/octotype/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    gittype = {
+      url = "github:unhappychoice/gittype";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -16,6 +25,8 @@
       self,
       nixpkgs,
       flake-utils,
+      octotype,
+      gittype,
     }@inputs:
     let
       inherit (flake-utils.lib) system;
@@ -26,6 +37,7 @@
         firefox-devedition-darwin = pkgs.callPackage ./firefox-darwin { edition = "firefox-devedition"; };
         claude-code = pkgs.callPackage ./claude-code { };
         ghostty = pkgs.callPackage ./ghostty { };
+        # gittype = inputs.gittype.packages.${pkgs.system}.default;
         hammerspoon = pkgs.callPackage ./hammerspoon { };
         librewolf-darwin = pkgs.callPackage ./firefox-darwin {
           edition = "librewolf-${pkgs.hostPlatform.darwinArch}";
@@ -33,6 +45,7 @@
         mongodb-atlas-cli = pkgs.callPackage ./mongodb-atlas-cli { };
         mongosh = pkgs.callPackage ./mongosh { };
         monodraw = pkgs.callPackage ./monodraw { };
+        octotype = inputs.octotype.packages.${pkgs.system}.octotype;
         shortcat = pkgs.callPackage ./shortcat { };
         wireman = pkgs.callPackage ./wireman { };
         yaak = pkgs.callPackage ./yaak { };
