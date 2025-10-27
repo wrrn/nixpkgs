@@ -10,14 +10,14 @@
       url = "github:numtide/flake-utils";
     };
 
-    # octotype = {
-    #   url = "github:mahlquistj/octotype/main";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    # gittype = {
-    #   url = "github:unhappychoice/gittype";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    octotype = {
+      url = "github:mahlquistj/octotype/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    gittype = {
+      url = "github:unhappychoice/gittype";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
