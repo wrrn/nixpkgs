@@ -45,7 +45,7 @@
         mongodb-atlas-cli = pkgs.callPackage ./mongodb-atlas-cli { };
         mongosh = pkgs.callPackage ./mongosh { };
         monodraw = pkgs.callPackage ./monodraw { };
-        octotype = inputs.octotype.packages.${pkgs.system}.octotype;
+        # octotype = inputs.octotype.packages.${pkgs.system}.octotype;
         shortcat = pkgs.callPackage ./shortcat { };
         wireman = pkgs.callPackage ./wireman { };
         yaak = pkgs.callPackage ./yaak { };
