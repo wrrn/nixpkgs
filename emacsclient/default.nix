@@ -50,7 +50,7 @@ in
 
 # This builds the EmacsClient.app from an apple script. Then installs the plist
 # and emacs icons.
-pkgs.runCommandNoCC "emacsclient-app"
+pkgs.runCommand "emacsclient-app"
   {
     # Add osacompile to list of build dependencies.
     nativeBuildInputs = [ buildSymlinks ];
