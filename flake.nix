@@ -30,27 +30,28 @@
     }@inputs:
     let
       inherit (flake-utils.lib) system;
-      allPackages = pkgs: rec {
+      darwinPackages = pkgs: rec {
         amethyst = pkgs.callPackage ./amethyst { };
         emacs-plus = pkgs.callPackage ./emacs { };
         emacs-plus-client = pkgs.callPackage ./emacsclient { emacsPkg = emacs-plus; };
         firefox-devedition-darwin = pkgs.callPackage ./firefox-darwin { edition = "firefox-devedition"; };
-        claude-code = pkgs.callPackage ./claude-code { };
-        ghostty = pkgs.callPackage ./ghostty { };
-        # gittype = inputs.gittype.packages.${pkgs.system}.default;
-        hammerspoon = pkgs.callPackage ./hammerspoon { };
         librewolf-darwin = pkgs.callPackage ./firefox-darwin {
           edition = "librewolf-${pkgs.hostPlatform.darwinArch}";
         };
+        hammerspoon = pkgs.callPackage ./hammerspoon { };
+        monodraw = pkgs.callPackage ./monodraw { };
+        shortcat = pkgs.callPackage ./shortcat { };
+      };
+
+      packages = pkgs: rec {
+        claude-code = pkgs.callPackage ./claude-code { };
         mongodb-atlas-cli = pkgs.callPackage ./mongodb-atlas-cli { };
         mongosh = pkgs.callPackage ./mongosh { };
-        monodraw = pkgs.callPackage ./monodraw { };
+        # gittype = inputs.gittype.packages.${pkgs.system}.default;
         # octotype = inputs.octotype.packages.${pkgs.system}.octotype;
-        shortcat = pkgs.callPackage ./shortcat { };
-        wireman = pkgs.callPackage ./wireman { };
-        yaak = pkgs.callPackage ./yaak { };
-        zen-browser = pkgs.callPackage ./zenbrowser { };
       };
+
+      allPackages = pkgs: (darwinPackages pkgs) // (packages pkgs);
     in
     {
       packages = {
@@ -61,8 +62,7 @@
               config.allowUnfree = true;
             };
           in
-          allPackages pkgs;
-
+          (darwinPackages pkgs) // (packages pkgs);
       };
 
       overlays = {
