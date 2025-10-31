@@ -5,7 +5,7 @@
   nix-update-script,
 }:
 pkgs.mongodb-atlas-cli.overrideAttrs (previousAttrs: rec {
-  version = "atlascli/v1.50.0";
+  version = "1.50.0";
 
   src = fetchFromGitHub {
     owner = "mongodb";
