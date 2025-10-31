@@ -47,6 +47,7 @@
         claude-code = pkgs.callPackage ./claude-code { };
         mongodb-atlas-cli = pkgs.callPackage ./mongodb-atlas-cli { };
         mongosh = pkgs.callPackage ./mongosh { };
+        sbcl = pkgs.callPackage ./sbcl { };
         # gittype = inputs.gittype.packages.${pkgs.system}.default;
         # octotype = inputs.octotype.packages.${pkgs.system}.octotype;
       };
