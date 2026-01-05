@@ -6,6 +6,10 @@
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
 
+    unstable = {
+      url = "github:NixOS/nixpkgs/nixos-unstable";
+    };
+
     flake-utils = {
       url = "github:numtide/flake-utils";
     };
@@ -24,6 +28,7 @@
     {
       self,
       nixpkgs,
+      unstable,
       flake-utils,
       octotype,
       gittype,
@@ -43,7 +48,9 @@
         shortcat = pkgs.callPackage ./shortcat { };
       };
 
-      packages = pkgs: rec {
+      packages =
+        { pkgs, pkgs-unstable }:
+        rec {
           claude-code = pkgs.callPackage ./claude-code { };
           mongodb-atlas-cli = pkgs.callPackage ./mongodb-atlas-cli { };
           mongosh = pkgs.callPackage ./mongosh { };
@@ -55,7 +62,8 @@
           # octotype = inputs.octotype.packages.${pkgs.system}.octotype;
         };
 
-      allPackages = pkgs: (darwinPackages pkgs) // (packages pkgs);
+      allPackages =
+        { pkgs, pkgs-unstable }: (darwinPackages pkgs) // (packages { inherit pkgs pkgs-unstable; });
     in
     {
       packages = {
@@ -65,14 +73,37 @@
               system = system.aarch64-darwin;
               config.allowUnfree = true;
             };
+            pkgs-unstable = import unstable {
+              system = system.aarch64-darwin;
+              config.allowUnfree = true;
+            };
           in
-          (darwinPackages pkgs) // (packages pkgs);
+          (darwinPackages pkgs) // (packages { inherit pkgs pkgs-unstable; });
+        x86_64-linux =
+          let
+            pkgs = import nixpkgs {
+              system = system.x86_64-linux;
+              config.allowUnfree = true;
+            };
+            pkgs-unstable = import unstable {
+              system = system.x86_64-linux;
+              config.allowUnfree = true;
+            };
+
+          in
+          packages { inherit pkgs pkgs-unstable; };
       };
 
       overlays = {
         default = (
           final: prev: {
-            wrrn = allPackages final;
+            wrrn = allPackages {
+              pkgs = final;
+              pkgs-unstable = import unstable {
+                system = final.stdenv.system;
+                config.allowUnfree = true;
+              };
+            };
           }
         );
 
