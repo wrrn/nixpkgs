@@ -44,13 +44,16 @@
       };
 
       packages = pkgs: rec {
-        claude-code = pkgs.callPackage ./claude-code { };
-        mongodb-atlas-cli = pkgs.callPackage ./mongodb-atlas-cli { };
-        mongosh = pkgs.callPackage ./mongosh { };
-        sbcl = pkgs.callPackage ./sbcl { };
-        # gittype = inputs.gittype.packages.${pkgs.system}.default;
-        # octotype = inputs.octotype.packages.${pkgs.system}.octotype;
-      };
+          claude-code = pkgs.callPackage ./claude-code { };
+          mongodb-atlas-cli = pkgs.callPackage ./mongodb-atlas-cli { };
+          mongosh = pkgs.callPackage ./mongosh { };
+          sbcl = pkgs.callPackage ./sbcl { };
+          pdfbook2 = pkgs.callPackage ./pdfbook2 { };
+          opencode = pkgs-unstable.callPackage ./opencode { };
+          codex = pkgs-unstable.callPackage ./codex { };
+          # gittype = inputs.gittype.packages.${pkgs.system}.default;
+          # octotype = inputs.octotype.packages.${pkgs.system}.octotype;
+        };
 
       allPackages = pkgs: (darwinPackages pkgs) // (packages pkgs);
     in
