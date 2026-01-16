@@ -5,12 +5,12 @@
   lib,
 }:
 let
-  version = "0.79.0";
+  version = "0.86.0";
   src = fetchFromGitHub {
     owner = "openai";
     repo = "codex";
     tag = "rust-v${version}";
-    hash = "sha256-fp/R/F0LcFLHfSNUW4pO2EG2ICce5vzxsOBYrm2tyaA=";
+    hash = "sha256-sypqDp67nMnxSmdUs2W8TCmfe2Ye9jO3vXLOpNeqjlI=";
   };
 in
 codex.overrideAttrs (previousAttrs: {
@@ -19,6 +19,6 @@ codex.overrideAttrs (previousAttrs: {
     inherit src;
     name = "codex-${version}-vendor";
     sourceRoot = "${src.name}/codex-rs";
-    hash = "sha256-qCf8kJ2AuPfpykNiF2KNJqOs+Vq+BQHgMseqPtiGiz0=";
+    hash = "sha256-Ryr5mFc+StT1d+jBtRsrOzMtyEJf7W1HbMbnC84ps4s=";
   };
 })
