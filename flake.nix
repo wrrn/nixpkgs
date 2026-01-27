@@ -58,7 +58,9 @@
           pdfbook2 = pkgs.callPackage ./pdfbook2 { };
           opencode = pkgs-unstable.callPackage ./opencode { };
           codex = pkgs-unstable.callPackage ./codex { };
-          obs-studio-plugins.droidcam-obs = pkgs-unstable.obs-studio-plugins.droidcam-obs;
+          obs-studio-plugins.droidcam-obs = pkgs-unstable.obs-studio-plugins.droidcam-obs.override {
+            stdenv = pkgs.stdenv;
+          };
           # cider = pkgs-unstable.callPackage ./cider-2 { };
           # gittype = inputs.gittype.packages.${pkgs.system}.default;
           # octotype = inputs.octotype.packages.${pkgs.system}.octotype;
