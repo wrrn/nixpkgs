@@ -52,15 +52,17 @@
         { pkgs, pkgs-unstable }:
         rec {
           claude-code = pkgs.callPackage ./claude-code { };
+          codex = pkgs-unstable.callPackage ./codex { };
+          jw = pkgs.callPackage ./jw { };
           mongodb-atlas-cli = pkgs.callPackage ./mongodb-atlas-cli { };
           mongosh = pkgs.callPackage ./mongosh { };
-          sbcl = pkgs.callPackage ./sbcl { };
-          pdfbook2 = pkgs.callPackage ./pdfbook2 { };
-          opencode = pkgs-unstable.callPackage ./opencode { };
-          codex = pkgs-unstable.callPackage ./codex { };
           obs-studio-plugins.droidcam-obs = pkgs-unstable.obs-studio-plugins.droidcam-obs.override {
             stdenv = pkgs.stdenv;
           };
+          opencode = pkgs-unstable.callPackage ./opencode { };
+          pdfbook2 = pkgs.callPackage ./pdfbook2 { };
+          sbcl = pkgs.callPackage ./sbcl { };
+
           # cider = pkgs-unstable.callPackage ./cider-2 { };
           # gittype = inputs.gittype.packages.${pkgs.system}.default;
           # octotype = inputs.octotype.packages.${pkgs.system}.octotype;
