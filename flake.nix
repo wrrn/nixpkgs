@@ -56,9 +56,14 @@
           jw = pkgs.callPackage ./jw { };
           mongodb-atlas-cli = pkgs.callPackage ./mongodb-atlas-cli { };
           mongosh = pkgs.callPackage ./mongosh { };
-          obs-studio-plugins.droidcam-obs = pkgs-unstable.obs-studio-plugins.droidcam-obs.override {
-            stdenv = pkgs.stdenv;
+          obs-studio-plugins = {
+            droidcam-obs = pkgs-unstable.obs-studio-plugins.droidcam-obs.override {
+              stdenv = pkgs.stdenv;
+            };
+
+            obs-backgroundremoval = pkgs.callPackage ./obs-backgroundremoval { };
           };
+
           opencode = pkgs-unstable.callPackage ./opencode { };
           pdfbook2 = pkgs.callPackage ./pdfbook2 { };
           sbcl = pkgs.callPackage ./sbcl { };
