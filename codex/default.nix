@@ -6,12 +6,12 @@
   nix-update-script,
 }:
 let
-  version = "0.88.0";
+  version = "0.95.0";
   src = fetchFromGitHub {
     owner = "openai";
     repo = "codex";
     tag = "rust-v${version}";
-    hash = "sha256-Ff6Ut1GwRPd2oB4/YojKgS/CYMG0TVizXOHKfpKClqY=";
+    hash = "sha256-qJKOk7rk1Uv7BI9pYFp42c5qrelx5TGOUIRIdOhf1Xc=";
   };
 in
 codex.overrideAttrs (previousAttrs: {
@@ -20,7 +20,7 @@ codex.overrideAttrs (previousAttrs: {
     inherit src;
     name = "codex-${version}-vendor";
     sourceRoot = "${src.name}/codex-rs";
-    hash = "sha256-eLao+Jaq7+Bu9QNHDJYD3zX2BQvlX/BSTYr4gpCD++Q=";
+    hash = "sha256-vVLMPrZ23n/u6fJQcw6GR4GiyzmMgHvpHFhZZL2CRW4=";
   };
 
   passthru = previousAttrs.passthru or { } // {
