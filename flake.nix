@@ -14,14 +14,21 @@
       url = "github:numtide/flake-utils";
     };
 
+    codex = {
+      url = "github:openai/codex/rust-v0.96.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     octotype = {
       url = "github:mahlquistj/octotype/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     gittype = {
       url = "github:unhappychoice/gittype";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
   };
 
   outputs =
@@ -30,6 +37,7 @@
       nixpkgs,
       unstable,
       flake-utils,
+      codex,
       octotype,
       gittype,
     }@inputs:
@@ -52,7 +60,10 @@
         { pkgs, pkgs-unstable }:
         rec {
           claude-code = pkgs.callPackage ./claude-code { };
-          codex = pkgs-unstable.callPackage ./codex { };
+          codex = pkgs.callPackage ./codex {
+            version = "0.96.0";
+            codex = inputs.codex.packages.${pkgs.system}.default;
+          };
           handy = pkgs-unstable.callPackage ./handy { };
           jw = pkgs.callPackage ./jw { };
           mongodb-atlas-cli = pkgs.callPackage ./mongodb-atlas-cli { };
