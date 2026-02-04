@@ -61,8 +61,7 @@
         rec {
           claude-code = pkgs.callPackage ./claude-code { };
           codex = pkgs.callPackage ./codex {
-            version = "0.96.0";
-            codex = inputs.codex.packages.${pkgs.system}.default;
+            codex = pkgs-unstable.codex;
           };
           handy = pkgs-unstable.callPackage ./handy { };
           jw = pkgs.callPackage ./jw { };

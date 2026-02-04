@@ -1,38 +1,40 @@
 {
   codex,
-  version,
-
-  clang,
-  cmake,
-  gitMinimal,
-  installShellFiles,
-  makeBinaryWrapper,
-
-  libclang,
-  openssl,
-  stdenv,
+  fetchFromGitHub,
+  rustPlatform,
+  lib,
+  nix-update-script,
 }:
+let
+  version = "0.96.0";
+  src = fetchFromGitHub {
+    owner = "openai";
+    repo = "codex";
+    tag = "rust-v${version}";
+    hash = "sha256-g7VCsKrZsXux/h3sBXIHAraDyrfGJv9hW/tSHnwGfUg=";
+  };
+in
 codex.overrideAttrs (previousAttrs: {
-  inherit version;
-  __intentionallyOverridingVersion = true;
+  inherit version src;
+  cargoDeps = rustPlatform.importCargoLock {
+    lockFile = "${src}/codex-rs/Cargo.lock";
+    outputHashes = {
+      "crossterm-0.28.1" = "sha256-6qCtfSMuXACKFb9ATID39XyFDIEMFDmbx6SSmNe+728=";
+      "nucleo-0.5.0" = "sha256-Hm4SxtTSBrcWpXrtSqeO0TACbUxq3gizg1zD/6Yw/sI=";
+      "nucleo-matcher-0.3.1" = "sha256-Hm4SxtTSBrcWpXrtSqeO0TACbUxq3gizg1zD/6Yw/sI=";
+      "ratatui-0.29.0" = "sha256-HBvT5c8GsiCxMffNjJGLmHnvG77A6cqEL+1ARurBXho=";
+      "runfiles-0.1.0" = "sha256-uJpVLcQh8wWZA3GPv9D8Nt43EOirajfDJ7eq/FB+tek=";
+      "tokio-tungstenite-0.28.0" = "sha256-vJZ3S41gHtRt4UAODsjAoSCaTksgzCALiBmbWgyDCi8=";
+      "tungstenite-0.28.0" = "sha256-CyXZp58zGlUhEor7WItjQoS499IoSP55uWqr++ia+0A=";
+    };
+  };
 
-  nativeBuildInputs = (previousAttrs.nativeBuildInputs or [ ]) ++ [
-    clang
-    cmake
-    gitMinimal
-    installShellFiles
-    makeBinaryWrapper
-  ];
-
-  buildInputs = (previousAttrs.buildInputs or [ ]) ++ [
-    libclang
-    openssl
-  ];
-
-  # BoringSSL builds with -Werror; glibc fortified headers trigger stringop-overflow.
-  CFLAGS = (previousAttrs.CFLAGS or "") + " -Wno-error=stringop-overflow";
-  CXXFLAGS = (previousAttrs.CXXFLAGS or "") + " -Wno-error=stringop-overflow";
-
-  LIBCLANG_PATH = "${libclang.lib}/lib";
-  BINDGEN_EXTRA_CLANG_ARGS = "-isystem ${stdenv.cc.libc_dev}/include";
+  passthru = previousAttrs.passthru or { } // {
+    updateScript = nix-update-script {
+      extraArgs = [
+        "--version-regex"
+        "rust-v(.*)"
+      ];
+    };
+  };
 })
