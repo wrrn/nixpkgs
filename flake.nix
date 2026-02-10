@@ -73,6 +73,8 @@
             };
 
             obs-backgroundremoval = pkgs.callPackage ./obs-backgroundremoval { };
+
+            obs-live-backgroundremoval-lite = pkgs.callPackage ./obs-live-backgroundremoval-lite { };
           };
 
           opencode = pkgs-unstable.callPackage ./opencode { };
