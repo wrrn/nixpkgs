@@ -6,9 +6,11 @@
   libcap,
   nix-update-script,
   stdenv,
+  python3,
 }:
 let
   version = "0.104.0";
+  pythonWithPyYAML = python3.withPackages (ps: [ ps.pyyaml ]);
   src = fetchFromGitHub {
     owner = "openai";
     repo = "codex";
@@ -23,6 +25,9 @@ codex.overrideAttrs (previousAttrs: {
     CARGO_PROFILE_RELEASE_CODEGEN_UNITS = "16";
   };
   buildInputs = (previousAttrs.buildInputs or [ ]) ++ lib.optionals stdenv.hostPlatform.isLinux [ libcap ];
+  postFixup = (previousAttrs.postFixup or "") + ''
+    wrapProgram $out/bin/codex --prefix PATH : ${lib.makeBinPath [ pythonWithPyYAML ]}
+  '';
   cargoDeps = rustPlatform.importCargoLock {
     lockFile = "${src}/codex-rs/Cargo.lock";
     outputHashes = {
