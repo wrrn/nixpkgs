@@ -3,7 +3,9 @@
   fetchFromGitHub,
   rustPlatform,
   lib,
+  libcap,
   nix-update-script,
+  stdenv,
 }:
 let
   version = "0.104.0";
@@ -16,6 +18,11 @@ let
 in
 codex.overrideAttrs (previousAttrs: {
   inherit version src;
+  env = (previousAttrs.env or { }) // {
+    CARGO_PROFILE_RELEASE_LTO = "thin";
+    CARGO_PROFILE_RELEASE_CODEGEN_UNITS = "16";
+  };
+  buildInputs = (previousAttrs.buildInputs or [ ]) ++ lib.optionals stdenv.hostPlatform.isLinux [ libcap ];
   cargoDeps = rustPlatform.importCargoLock {
     lockFile = "${src}/codex-rs/Cargo.lock";
     outputHashes = {
