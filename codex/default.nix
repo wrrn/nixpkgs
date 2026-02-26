@@ -9,13 +9,13 @@
   python3,
 }:
 let
-  version = "0.104.0";
+  version = "0.112.0";
   pythonWithPyYAML = python3.withPackages (ps: [ ps.pyyaml ]);
   src = fetchFromGitHub {
     owner = "openai";
     repo = "codex";
     tag = "rust-v${version}";
-    hash = "sha256-spWb/msjl9am7E4UkZfEoH0diFbvAfydJKJQM1N1aoI=";
+    hash = "sha256-tOrqGXh4k5GzcPhCUaiYoUVt4liYfgRd2ejkrdQpqWs=";
   };
 in
 codex.overrideAttrs (previousAttrs: {
