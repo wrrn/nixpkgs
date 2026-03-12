@@ -19,6 +19,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    voxtype = {
+      url = "github:peteonrails/voxtype";
+      inputs.nixpkgs.follows = "unstable";
+    };
+
     octotype = {
       url = "github:mahlquistj/octotype/main";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,6 +45,7 @@
       codex,
       octotype,
       gittype,
+      voxtype,
     }@inputs:
     let
       inherit (flake-utils.lib) system;
@@ -80,6 +86,7 @@
           opencode = pkgs-unstable.callPackage ./opencode { };
           pdfbook2 = pkgs.callPackage ./pdfbook2 { };
           sbcl = pkgs.callPackage ./sbcl { };
+          voxtype = inputs.voxtype.packages.${pkgs.system}.onnx;
 
           # cider = pkgs-unstable.callPackage ./cider-2 { };
           # gittype = inputs.gittype.packages.${pkgs.system}.default;
