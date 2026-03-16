@@ -7,6 +7,8 @@
   nix-update-script,
   stdenv,
   python3,
+  mold,
+  clang,
 }:
 let
   version = "0.114.0";
@@ -23,8 +25,18 @@ codex.overrideAttrs (previousAttrs: {
   env = (previousAttrs.env or { }) // {
     CARGO_PROFILE_RELEASE_LTO = "thin";
     CARGO_PROFILE_RELEASE_CODEGEN_UNITS = "16";
+    CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER = "clang";
+    RUSTFLAGS = "-C link-arg=-fuse-ld=${mold}/bin/mold";
+
   };
-  buildInputs = (previousAttrs.buildInputs or [ ]) ++ lib.optionals stdenv.hostPlatform.isLinux [ libcap ];
+
+  nativeBuildInputs = (previousAttrs.nativeBuildInputs or [ ]) ++ [
+    mold
+    clang
+  ];
+
+  buildInputs =
+    (previousAttrs.buildInputs or [ ]) ++ lib.optionals stdenv.hostPlatform.isLinux [ libcap ];
   postFixup = (previousAttrs.postFixup or "") + ''
     wrapProgram $out/bin/codex --prefix PATH : ${lib.makeBinPath [ pythonWithPyYAML ]}
   '';
@@ -39,6 +51,12 @@ codex.overrideAttrs (previousAttrs: {
       "tungstenite-0.27.0" = "sha256-AN5wql2X2yJnQ7lnDxpljNw0Jua40GtmT+w3wjER010=";
     };
   };
+
+  cargoBuildFlags = (previousAttrs.cargoBuildFlags or [ ]) ++ [ "--timings" ];
+
+  postInstall = (previousAttrs.postInstall or "") + ''
+    cp target/cargo-timings/cargo-timing.html $out/cargo-timing.html
+  '';
 
   passthru = previousAttrs.passthru or { } // {
     updateScript = nix-update-script {
