@@ -64,12 +64,15 @@
 
       packages =
         { pkgs, pkgs-unstable }:
+        let
+          inherit (pkgs.stdenv.hostPlatform) system;
+        in
         rec {
           claude-code = pkgs.callPackage ./claude-code { };
           codex = pkgs.callPackage ./codex {
-            codex = inputs.codex.packages.${pkgs.system}.default;
+            codex = inputs.codex.packages.${system}.default;
           };
-          codex-raw = inputs.codex.packages.${pkgs.system}.default;
+          codex-raw = inputs.codex.packages.${system}.default;
           handy = pkgs-unstable.callPackage ./handy { };
           jw = pkgs.callPackage ./jw { };
           mongodb-atlas-cli = pkgs.callPackage ./mongodb-atlas-cli { };
@@ -87,7 +90,7 @@
           opencode = pkgs-unstable.callPackage ./opencode { };
           pdfbook2 = pkgs.callPackage ./pdfbook2 { };
           sbcl = pkgs.callPackage ./sbcl { };
-          voxtype = inputs.voxtype.packages.${pkgs.system}.onnx;
+          voxtype = inputs.voxtype.packages.${system}.onnx;
 
           # cider = pkgs-unstable.callPackage ./cider-2 { };
           # gittype = inputs.gittype.packages.${pkgs.system}.default;
