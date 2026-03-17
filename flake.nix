@@ -67,8 +67,9 @@
         rec {
           claude-code = pkgs.callPackage ./claude-code { };
           codex = pkgs.callPackage ./codex {
-            codex = pkgs-unstable.codex;
+            codex = inputs.codex.packages.${pkgs.system}.default;
           };
+          codex-raw = inputs.codex.packages.${pkgs.system}.default;
           handy = pkgs-unstable.callPackage ./handy { };
           jw = pkgs.callPackage ./jw { };
           mongodb-atlas-cli = pkgs.callPackage ./mongodb-atlas-cli { };
