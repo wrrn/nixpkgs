@@ -8,16 +8,16 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1772999266,
-        "narHash": "sha256-tOrqGXh4k5GzcPhCUaiYoUVt4liYfgRd2ejkrdQpqWs=",
+        "lastModified": 1773686592,
+        "narHash": "sha256-8l5OZQS6L1uhVpqZZGx2O3Xt6qTaTAYDR5XWOydTVuQ=",
         "owner": "openai",
         "repo": "codex",
-        "rev": "0ec16b2d9dd7d92f5661b132afdf4df3abb3d443",
+        "rev": "f028679abb30051cec2434e624cd99975986b41b",
         "type": "github"
       },
       "original": {
         "owner": "openai",
-        "ref": "rust-v0.112.0",
+        "ref": "rust-v0.115.0",
         "repo": "codex",
         "type": "github"
       }
@@ -318,7 +318,7 @@
       "inputs": {
         "flake-utils": "flake-utils_2",
         "nixpkgs": [
-          "nixpkgs"
+          "unstable"
         ]
       },
       "locked": {
