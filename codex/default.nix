@@ -26,7 +26,7 @@ codex.overrideAttrs (previousAttrs: {
     CARGO_PROFILE_RELEASE_LTO = "thin";
     CARGO_PROFILE_RELEASE_CODEGEN_UNITS = "16";
     CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER = "clang";
-    RUSTFLAGS = "-C link-arg=-fuse-ld=${mold}/bin/mold";
+    RUSTFLAGS = "-C linker=${clang}/bin/clang -C link-arg=-fuse-ld=${mold}/bin/mold";
 
   };
 
