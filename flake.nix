@@ -15,7 +15,7 @@
     };
 
     codex = {
-      url = "github:openai/codex/rust-v0.116.0";
+      url = "github:openai/codex/rust-v0.118.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
