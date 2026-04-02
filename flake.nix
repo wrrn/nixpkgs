@@ -14,6 +14,10 @@
       url = "github:numtide/flake-utils";
     };
 
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
+    };
+
     codex = {
       url = "github:openai/codex/rust-v0.118.0";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -43,6 +47,7 @@
       unstable,
       flake-utils,
       codex,
+      llm-agents,
       octotype,
       gittype,
       voxtype,
@@ -66,14 +71,16 @@
         { pkgs, pkgs-unstable }:
         let
           inherit (pkgs.stdenv.hostPlatform) system;
+          llm-agents = inputs.llm-agents.packages.${system};
         in
         rec {
-          claude-code = pkgs.callPackage ./claude-code { };
+          claude-code = llm-agents.claude-code;
           codex = pkgs.callPackage ./codex {
-            codex = inputs.codex.packages.${system}.default;
+            codex = llm-agents.codex;
           };
-          codex-raw = inputs.codex.packages.${system}.default;
-          handy = pkgs-unstable.callPackage ./handy { };
+          handy = llm-agents.handy;
+          pi = llm-agents.pi;
+
           jw = pkgs.callPackage ./jw { };
           mongodb-atlas-cli = pkgs.callPackage ./mongodb-atlas-cli { };
           mongosh = pkgs.callPackage ./mongosh { };
