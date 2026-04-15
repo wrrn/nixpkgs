@@ -89,9 +89,8 @@
               stdenv = pkgs.stdenv;
             };
 
-            obs-backgroundremoval = pkgs.callPackage ./obs-backgroundremoval { };
-
-            obs-live-backgroundremoval-lite = pkgs.callPackage ./obs-live-backgroundremoval-lite { };
+            obs-backgroundremoval = pkgs-unstable.callPackage ./obs-backgroundremoval { };
+            obs-live-backgroundremoval-lite = pkgs-unstable.callPackage ./obs-live-backgroundremoval-lite { };
           };
 
           opencode = pkgs-unstable.callPackage ./opencode { };
