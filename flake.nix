@@ -14,13 +14,13 @@
       url = "github:numtide/flake-utils";
     };
 
-    llm-agents = {
-      url = "github:numtide/llm-agents.nix";
+    claude-desktop = {
+      url = "github:aaddrick/claude-desktop-debian";
+      inputs.nixpkgs.follows = "unstable";
     };
 
-    codex = {
-      url = "github:openai/codex/rust-v0.118.0";
-      inputs.nixpkgs.follows = "nixpkgs";
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
     };
 
     voxtype = {
@@ -46,7 +46,7 @@
       nixpkgs,
       unstable,
       flake-utils,
-      codex,
+      claude-desktop,
       llm-agents,
       octotype,
       gittype,
@@ -72,9 +72,11 @@
         let
           inherit (pkgs.stdenv.hostPlatform) system;
           llm-agents = inputs.llm-agents.packages.${system};
+          claude-desktop-pkgs = inputs.claude-desktop.packages.${system};
         in
         rec {
           claude-code = llm-agents.claude-code;
+          claude-desktop = claude-desktop-pkgs.claude-desktop-fhs;
           codex = pkgs.callPackage ./codex {
             codex = llm-agents.codex;
           };
