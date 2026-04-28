@@ -19,6 +19,11 @@
       inputs.nixpkgs.follows = "unstable";
     };
 
+    lan-mouse = {
+      url = "github:feschber/lan-mouse";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
     };
@@ -47,6 +52,7 @@
       unstable,
       flake-utils,
       claude-desktop,
+      lan-mouse,
       llm-agents,
       octotype,
       gittype,
@@ -173,6 +179,10 @@
           };
         }
       );
+
+      homeManagerModules = {
+        lan-mouse = import ./lan-mouse/hm-module.nix inputs.lan-mouse;
+      };
     };
 
 }
