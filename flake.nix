@@ -104,6 +104,7 @@
           opencode = pkgs-unstable.callPackage ./opencode { };
           pdfbook2 = pkgs.callPackage ./pdfbook2 { };
           sbcl = pkgs.callPackage ./sbcl { };
+          warm-burnout = pkgs.callPackage ./warm-burnout { };
           voxtype = inputs.voxtype.packages.${system}.onnx;
 
           # cider = pkgs-unstable.callPackage ./cider-2 { };
