@@ -20,12 +20,12 @@
   nix-update-script,
 }:
 let
-  version = "1.3.7";
+  version = "1.4.0";
   src = fetchFromGitHub {
     owner = "royshil";
     repo = "obs-backgroundremoval";
     rev = version;
-    hash = "sha256-bl0KixfBnBeyidZ4+RJhX4TDy33l9awo0wISMr7XUwk=";
+    hash = "sha256-DycPO/e9m+AzAFAiFUnNXSe4vdfJ3JYI7L+zglXUU4Y=";
   };
 in
 stdenv.mkDerivation {
