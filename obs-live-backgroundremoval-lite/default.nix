@@ -20,12 +20,12 @@
   ...
 }:
 let
-  version = "4.0.0";
+  version = "4.0.1";
   src = fetchFromGitHub {
     owner = "kaito-tokyo";
     repo = "live-backgroundremoval-lite";
     rev = version;
-    hash = "sha256-TkVF2J8SFEHuwdnmsZyhxxfRydOlhiktee800zTbWA0=";
+    hash = "sha256-6kQgDdX3YJU2+ji4jm3KoBJ5p4KiFrqlx4I0o6XYyxs=";
   };
 in
 pkgs.stdenv.mkDerivation {
