@@ -11,7 +11,7 @@
 
   ## Dependencies
   obs-studio,
-  onnxruntime,
+  onnxruntime-openvino,
   opencv4,
   curl,
   simde,
@@ -40,8 +40,8 @@ stdenv.mkDerivation {
 
   buildInputs = [
     obs-studio
-    onnxruntime
-    onnxruntime.dev
+    onnxruntime-openvino
+    onnxruntime-openvino.dev
     opencv4
     curl
     curl.dev

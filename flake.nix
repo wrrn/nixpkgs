@@ -97,9 +97,13 @@
               stdenv = pkgs.stdenv;
             };
 
-            obs-backgroundremoval = pkgs-unstable.callPackage ./obs-backgroundremoval { };
+            obs-backgroundremoval = pkgs-unstable.callPackage ./obs-backgroundremoval {
+              inherit onnxruntime-openvino;
+            };
             obs-live-backgroundremoval-lite = pkgs-unstable.callPackage ./obs-live-backgroundremoval-lite { };
           };
+
+          onnxruntime-openvino = pkgs-unstable.callPackage ./onnxruntime-openvino { };
 
           opencode = pkgs-unstable.callPackage ./opencode { };
           pdfbook2 = pkgs.callPackage ./pdfbook2 { };
