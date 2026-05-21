@@ -5,7 +5,7 @@
 }:
 
 let
-  version = "unstable-2026-05-05";
+  version = "1.8.0";
 in
 stdenvNoCC.mkDerivation {
   pname = "warm-burnout";
@@ -15,7 +15,7 @@ stdenvNoCC.mkDerivation {
     owner = "felipefdl";
     repo = "warm-burnout";
     rev = "main";
-    hash = "sha256-h9NRqsGVKY8ld83u9yHARFMfT+Gbq5R0Cx+TOyKLSB0=";
+    hash = "sha256-EtAPdh+voNf+z4dDq38jKwbniEJu2htlQNYaqH3lcQI=";
   };
 
   dontBuild = true;
