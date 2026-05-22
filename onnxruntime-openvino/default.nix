@@ -17,5 +17,11 @@ else
     buildInputs = (old.buildInputs or [ ]) ++ [ openvino ];
     cmakeFlags = (old.cmakeFlags or [ ]) ++ [
       "-Donnxruntime_USE_OPENVINO=ON"
+      "-DOpenVINO_DIR=${openvino}/runtime/cmake"
     ];
+
+    # Building tests with OpenVINO enabled fails due to -Werror=unused-result
+    # on protobuf SerializeToString calls. We don't need to run tests for
+    # downstream consumers so just disable them to save build time.
+    doCheck = false;
   })
