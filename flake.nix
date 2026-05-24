@@ -93,7 +93,7 @@
           mongodb-atlas-cli = pkgs.callPackage ./mongodb-atlas-cli { };
           mongosh = pkgs.callPackage ./mongosh { };
           obs-studio-plugins = {
-            droidcam-obs = pkgs-unstable.obs-studio-plugins.droidcam-obs.override {
+            droidcam-obs = pkgs-unstable.callPackage ./droidcam-obs {
               stdenv = pkgs.stdenv;
             };
 
