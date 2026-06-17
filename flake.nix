@@ -111,7 +111,45 @@
           pdfbook2 = pkgs.callPackage ./pdfbook2 { };
           sbcl = pkgs.callPackage ./sbcl { };
           warm-burnout = pkgs.callPackage ./warm-burnout { };
-          voxtype = inputs.voxtype.packages.${system}.onnx;
+          voxtype =
+            let
+              voxFeatures = [
+                "parakeet-load-dynamic"
+                "moonshine"
+                "sensevoice"
+                "paraformer"
+                "dolphin"
+                "omnilingual"
+                "cohere"
+              ];
+              unwrapped =
+                inputs.voxtype.packages.${system}.voxtype-onnx-unwrapped.overrideAttrs (old: {
+                  buildFeatures = voxFeatures;
+                  cargoBuildFeatures = voxFeatures;
+                  cargoCheckFeatures = voxFeatures;
+                });
+            in
+            pkgs.symlinkJoin {
+              name = "voxtype-onnx-cohere-${unwrapped.version}";
+              paths = [ unwrapped ];
+              buildInputs = [ pkgs.makeWrapper ];
+              postBuild = ''
+                wrapProgram $out/bin/voxtype \
+                  --prefix PATH : ${pkgs.lib.makeBinPath (with pkgs; [
+                    pciutils
+                    libnotify
+                    xclip
+                    xdotool
+                    ydotool
+                    wl-clipboard
+                    dotool
+                    wtype
+                  ])} \
+                  --set ORT_DYLIB_PATH "${pkgs.onnxruntime}/lib/libonnxruntime.so" \
+                  --prefix LD_LIBRARY_PATH : "${pkgs.onnxruntime}/lib"
+              '';
+              inherit (unwrapped) meta;
+            };
 
           # cider = pkgs-unstable.callPackage ./cider-2 { };
           # gittype = inputs.gittype.packages.${pkgs.system}.default;
