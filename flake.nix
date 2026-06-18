@@ -109,7 +109,7 @@
           pdfbook2 = pkgs.callPackage ./pdfbook2 { };
           sbcl = pkgs.callPackage ./sbcl { };
           warm-burnout = pkgs.callPackage ./warm-burnout { };
-          voxtype = pkgs.callPackage ./voxtype { inherit inputs; };
+          voxtype = pkgs-unstable.callPackage ./voxtype { inherit inputs; };
 
           # cider = pkgs-unstable.callPackage ./cider-2 { };
           # gittype = inputs.gittype.packages.${pkgs.system}.default;
