@@ -82,9 +82,7 @@
         in
         rec {
           claude-code = llm-agents.claude-code;
-          claude-desktop = pkgs.callPackage ./claude-desktop {
-            inherit inputs claude-desktop-pkgs;
-          };
+          claude-desktop = claude-desktop-pkgs.claude-desktop-fhs;
           codex = pkgs.callPackage ./codex {
             codex = llm-agents.codex;
           };
