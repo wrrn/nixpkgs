@@ -43,6 +43,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -57,6 +62,7 @@
       octotype,
       gittype,
       voxtype,
+      ...
     }@inputs:
     let
       inherit (flake-utils.lib) system;
@@ -92,20 +98,16 @@
           jw = pkgs.callPackage ./jw { };
           mongodb-atlas-cli = pkgs.callPackage ./mongodb-atlas-cli { };
           mongosh = pkgs.callPackage ./mongosh { };
-          obs-studio-plugins = {
-            droidcam-obs = pkgs-unstable.callPackage ./droidcam-obs {
-              stdenv = pkgs.stdenv;
-            };
-
-            obs-backgroundremoval = pkgs-unstable.callPackage ./obs-backgroundremoval {
-              inherit onnxruntime-openvino;
-            };
-            obs-live-backgroundremoval-lite = pkgs-unstable.callPackage ./obs-live-backgroundremoval-lite { };
+          obs-plugin-droidcam-obs = pkgs-unstable.callPackage ./droidcam-obs {
+            stdenv = pkgs.stdenv;
           };
+          obs-plugin-backgroundremoval = pkgs-unstable.callPackage ./obs-backgroundremoval {
+            inherit onnxruntime-openvino;
+          };
+          obs-plugin-backgroundremoval-lite = pkgs-unstable.callPackage ./obs-live-backgroundremoval-lite { };
 
           onnxruntime-openvino = pkgs-unstable.callPackage ./onnxruntime-openvino { };
 
-          opencode = pkgs-unstable.callPackage ./opencode { };
           pdfbook2 = pkgs.callPackage ./pdfbook2 { };
           sbcl = pkgs.callPackage ./sbcl { };
           warm-burnout = pkgs.callPackage ./warm-burnout { };
@@ -188,6 +190,20 @@
       homeManagerModules = {
         lan-mouse = import ./lan-mouse/hm-module.nix inputs.lan-mouse;
       };
+
+      checks.x86_64-linux.lan-mouse-module =
+        (inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs { system = system.x86_64-linux; };
+          modules = [
+            (import ./lan-mouse/hm-module.nix inputs.lan-mouse)
+            {
+              home.username = "test";
+              home.homeDirectory = "/home/test";
+              home.stateVersion = "24.11";
+              programs.lan-mouse.enable = true;
+            }
+          ];
+        }).activationPackage;
     };
 
 }
