@@ -10,12 +10,12 @@ lan-mouse:
 
   options.programs.lan-mouse = {
     After = lib.mkOption {
-      type = lib.types.listOf lib.types.str;
+      type = lib.types.nullOr (lib.types.listOf lib.types.str);
       description = "The targets that lan-mouse should run after in systemd";
       default = null;
     };
     Wants = lib.mkOption {
-      type = lib.types.listOf lib.types.str;
+      type = lib.types.nullOr (lib.types.listOf lib.types.str);
       description = "The targets that lan-mouse wants to run in systemd";
       default = null;
     };
