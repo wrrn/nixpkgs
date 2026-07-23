@@ -85,6 +85,7 @@
           inherit (pkgs.stdenv.hostPlatform) system;
           llm-agents = inputs.llm-agents.packages.${system};
           claude-desktop-pkgs = inputs.claude-desktop.packages.${system};
+          lan-mouse-pkgs = inputs.lan-mouse.packages.${system};
         in
         rec {
           claude-code = llm-agents.claude-code;
@@ -96,6 +97,7 @@
           pi = llm-agents.pi;
 
           jw = pkgs.callPackage ./jw { };
+          lan-mouse = lan-mouse-pkgs.default;
           mongodb-atlas-cli = pkgs.callPackage ./mongodb-atlas-cli { };
           mongosh = pkgs.callPackage ./mongosh { };
           obs-plugin-droidcam-obs = pkgs-unstable.callPackage ./droidcam-obs {
