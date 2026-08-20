@@ -112,6 +112,7 @@
 
           pdfbook2 = pkgs.callPackage ./pdfbook2 { };
           sbcl = pkgs.callPackage ./sbcl { };
+          tide-item-jj = pkgs.callPackage ./tide-item-jj { };
           warm-burnout = pkgs.callPackage ./warm-burnout { };
           voxtype = pkgs-unstable.callPackage ./voxtype { inherit inputs; };
 
