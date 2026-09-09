@@ -66,10 +66,10 @@
     }@inputs:
     let
       inherit (flake-utils.lib) system;
-      darwinPackages = pkgs: rec {
+      darwinPackages = { pkgs, pkgs-unstable }: rec {
         amethyst = pkgs.callPackage ./amethyst { };
-        emacs-plus = pkgs.callPackage ./emacs { };
-        emacs-plus-client = pkgs.callPackage ./emacsclient { emacsPkg = emacs-plus; };
+        emacs-plus = pkgs-unstable.callPackage ./emacs { };
+        emacs-plus-client = pkgs-unstable.callPackage ./emacsclient { emacsPkg = emacs-plus; };
         firefox-devedition-darwin = pkgs.callPackage ./firefox-darwin { edition = "firefox-devedition"; };
         librewolf-darwin = pkgs.callPackage ./firefox-darwin {
           edition = "librewolf-${pkgs.hostPlatform.darwinArch}";
@@ -122,7 +122,8 @@
         };
 
       allPackages =
-        { pkgs, pkgs-unstable }: (darwinPackages pkgs) // (packages { inherit pkgs pkgs-unstable; });
+        { pkgs, pkgs-unstable }:
+        (darwinPackages { inherit pkgs pkgs-unstable; }) // (packages { inherit pkgs pkgs-unstable; });
     in
     {
       packages = {
@@ -137,7 +138,7 @@
               config.allowUnfree = true;
             };
           in
-          (darwinPackages pkgs) // (packages { inherit pkgs pkgs-unstable; });
+          allPackages { inherit pkgs pkgs-unstable; };
         x86_64-linux =
           let
             pkgs = import nixpkgs {
