@@ -114,7 +114,7 @@
           sbcl = pkgs.callPackage ./sbcl { };
           tide-item-jj = pkgs.callPackage ./tide-item-jj { };
           warm-burnout = pkgs.callPackage ./warm-burnout { };
-          voxtype = pkgs-unstable.callPackage ./voxtype { inherit inputs; };
+          voxtype = inputs.voxtype.packages.${system}.onnx;
 
           # cider = pkgs-unstable.callPackage ./cider-2 { };
           # gittype = inputs.gittype.packages.${pkgs.system}.default;
