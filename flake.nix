@@ -30,7 +30,7 @@
 
     voxtype = {
       url = "github:peteonrails/voxtype";
-      inputs.nixpkgs.follows = "unstable";
+      # inputs.nixpkgs.follows = "unstable";
     };
 
     octotype = {
