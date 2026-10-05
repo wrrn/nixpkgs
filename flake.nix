@@ -29,8 +29,9 @@
     };
 
     voxtype = {
-      url = "github:peteonrails/voxtype";
-      # inputs.nixpkgs.follows = "unstable";
+      # url = "github:peteonrails/voxtype";
+      url = "git+ssh://git@wrrn.sr.ht/~wrrn/voxtype";
+      inputs.nixpkgs.follows = "unstable";
     };
 
     octotype = {
@@ -114,8 +115,10 @@
           sbcl = pkgs.callPackage ./sbcl { };
           tide-item-jj = pkgs.callPackage ./tide-item-jj { };
           warm-burnout = pkgs.callPackage ./warm-burnout { };
+          # Local rebuild of voxtype's `onnx` package with the openvino-rs git
+          # dependency stripped. See voxtype/default.nix for why.
+          # voxtype = pkgs-unstable.callPackage ./voxtype { src = inputs.voxtype; };
           voxtype = inputs.voxtype.packages.${system}.onnx;
-
           # cider = pkgs-unstable.callPackage ./cider-2 { };
           # gittype = inputs.gittype.packages.${pkgs.system}.default;
           # octotype = inputs.octotype.packages.${pkgs.system}.octotype;
