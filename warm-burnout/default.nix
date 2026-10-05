@@ -15,7 +15,7 @@ stdenvNoCC.mkDerivation {
     owner = "felipefdl";
     repo = "warm-burnout";
     rev = "main";
-    hash = "sha256-9TOXUUGeu/F1QcQcnEZqK8zSyZSlUoVfeOVUupS+2mM=";
+    hash = "sha256-Tx1wpUOuuCCc/QqH+A6GC4GOWllRidITZBs9qw99q7A=";
   };
 
   dontBuild = true;
