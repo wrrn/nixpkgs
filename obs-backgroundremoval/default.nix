@@ -16,6 +16,7 @@
   curl,
   simde,
   libglvnd, # GLES2 headers (equivalent to libgles2-mesa-dev)
+  qt6,
 
   nix-update-script,
 }:
@@ -36,6 +37,7 @@ stdenv.mkDerivation {
     cmake
     ninja
     pkg-config
+    qt6.wrapQtAppsHook
   ];
 
   buildInputs = [
@@ -47,6 +49,7 @@ stdenv.mkDerivation {
     curl.dev
     simde
     libglvnd.dev # GLES2 headers (equivalent to libgles2-mesa-dev)
+    qt6.qtbase
   ];
 
   cmakeFlags = [
