@@ -122,6 +122,16 @@
           # cider = pkgs-unstable.callPackage ./cider-2 { };
           # gittype = inputs.gittype.packages.${pkgs.system}.default;
           # octotype = inputs.octotype.packages.${pkgs.system}.octotype;
+        }
+        # Widevine on Linux is x86_64 only, and the castLabs Electron this
+        # needs wants pipewire and speechd — neither of which means anything
+        # on darwin. Kept out of that attribute set entirely rather than left
+        # to fail at build time behind meta.platforms.
+        // pkgs.lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
+          slipmat = pkgs.callPackage ./slipmat { };
+          # MPRIS lives on the session D-Bus, so there is no darwin story at
+          # all — same treatment as slipmat above.
+          mpris-miniplayer = pkgs.callPackage ./mpris-miniplayer { };
         };
 
       allPackages =
