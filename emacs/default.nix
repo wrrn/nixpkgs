@@ -1,6 +1,6 @@
 { pkgs }:
 let
-  inherit (pkgs.stdenv) isDarwin;
+  inherit (pkgs.stdenv.hostPlatform) isDarwin;
   inherit (pkgs) fetchpatch;
   inherit (pkgs.lib) warn;
 
