@@ -91,16 +91,10 @@
         rec {
           claude-code = llm-agents.claude-code;
           claude-desktop = claude-desktop-pkgs.claude-desktop-fhs;
-          codex = pkgs.callPackage ./codex {
-            codex = llm-agents.codex;
-          };
           handy = llm-agents.handy;
           pi = llm-agents.pi;
 
-          jw = pkgs.callPackage ./jw { };
           lan-mouse = lan-mouse-pkgs.default;
-          mongodb-atlas-cli = pkgs.callPackage ./mongodb-atlas-cli { };
-          mongosh = pkgs.callPackage ./mongosh { };
           obs-plugin-droidcam-obs = pkgs-unstable.callPackage ./droidcam-obs {
             stdenv = pkgs.stdenv;
           };
