@@ -90,7 +90,7 @@
         in
         rec {
           claude-code = llm-agents.claude-code;
-          claude-desktop = claude-desktop-pkgs.claude-desktop-fhs;
+          claude-desktop = llm-agents.claude-desktop;
           handy = llm-agents.handy;
           pi = llm-agents.pi;
 
