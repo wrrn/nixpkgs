@@ -71,6 +71,7 @@
         amethyst = pkgs.callPackage ./amethyst { };
         emacs-plus = pkgs-unstable.callPackage ./emacs { };
         emacs-plus-client = pkgs-unstable.callPackage ./emacsclient { emacsPkg = emacs-plus; };
+        emacs-plus-launcher = pkgs-unstable.callPackage ./emacs-launcher { emacsPkg = emacs-plus; };
         firefox-devedition-darwin = pkgs.callPackage ./firefox-darwin { edition = "firefox-devedition"; };
         librewolf-darwin = pkgs.callPackage ./firefox-darwin {
           edition = "librewolf-${pkgs.hostPlatform.darwinArch}";
